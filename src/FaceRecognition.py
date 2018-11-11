@@ -1,7 +1,8 @@
 import numpy as np
 import cv2
 
-face_cascades = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
+face_cascades = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_default.xml')
+# face_cascades = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
 # face_cascades = cv2.CascadeClassifier('cascades/data/haarcascade_profileface.xml')
 
 capture = cv2.VideoCapture(0)
@@ -10,7 +11,7 @@ while True:
     ret, frame = capture.read()
 
     grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = face_cascades.detectMultiScale(grayscale, scaleFactor=1.5, minNeighbors=5)
+    faces = face_cascades.detectMultiScale(grayscale, scaleFactor=1.3, minNeighbors=5)
     for x, y, w, h in faces:
         print(x, y, w, h)
 
